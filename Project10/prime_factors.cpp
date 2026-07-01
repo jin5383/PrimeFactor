@@ -5,10 +5,17 @@ using std::vector;
 
 class PrimeFactors {
 public:
-	vector<int> of(int n)
+	vector<int> of(int number)
 	{
-		if (n == 2)
-			return { 2 };
-		return {};
+		vector<int> result = {};
+		for (int divisor = 2; number > 1; divisor++)
+		{
+			while (number % divisor == 0)
+			{
+				result.push_back(divisor);
+				number /= divisor;
+			}
+		}
+		return result;
 	}
 };

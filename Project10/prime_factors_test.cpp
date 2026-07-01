@@ -3,17 +3,39 @@
 #include <vector>
 
 using std::vector;
-
-TEST(PrimeFactors, Of1)
+class PrimeFixture : public testing::Test
 {
+public:
 	PrimeFactors prime_factor;
-	vector<int> expected = {};
+	vector<int> expected;
+
+};
+TEST_F(PrimeFixture, Of1)
+{
+	expected = {};
 	EXPECT_EQ(expected, prime_factor.of(1));
 }
 
-TEST(PrimeFactors, Of2)
+TEST_F(PrimeFixture, Of2)
 {
-	PrimeFactors prime_factor;
-	vector<int> expected = { 2 };
+	expected = { 2 };
 	EXPECT_EQ(expected, prime_factor.of(2));
+}
+
+TEST_F(PrimeFixture, Of3)
+{
+	expected = { 3 };
+	EXPECT_EQ(expected, prime_factor.of(3));
+}
+
+TEST_F(PrimeFixture, Of9)
+{
+	expected = { 3,3 };
+	EXPECT_EQ(expected, prime_factor.of(9));
+}
+
+TEST_F(PrimeFixture, Of12)
+{
+	expected = { 2,2,3 };
+	EXPECT_EQ(expected, prime_factor.of(12));
 }
